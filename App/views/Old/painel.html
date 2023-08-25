@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+    </head>
+    <body>
+        <div id="header">
+            <h1><strong><%= headername %></strong></h1>
+            <div id="navigation">
+                <div class="topnav">
+                    <a href="./">Principal</a>
+                    <a class="active" href="./painel">Painel de Usuário</a>
+                    <a href="./contato">Contato</a>
+                    <a href="./sobre">Sobre</a>
+
+                    <div style="text-align: right; margin-right: 1vw;">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="JanelaDeFiltros" style="position: relative; margin-left:3vw; margin-top:1vh; width:94vw;  
+        top:auto; right: 10px; padding: 0.2%;
+        background-color: rgba(255, 255, 255, 0.877);
+        border: 1px solid black; height:fit-content;">      
+        <p style="font: 18px Lucida Grande, Helvetica, Arial, sans-serif;">Logado como <strong><%= username %></strong>.</p>
+        <br>
+        <!-- Option: Open form to add new sample -->
+        <button type="button" style="margin-left:0.0vw;" style="text-align: center;" onclick="window.location.href='/form'">Adicionar Entrada</button>
+        <br><br>
+        <!-- Print de lista de coletas do usuario ==> para cada tem uma opcao de editar entrada! -->
+        <div style="border: 1px solid black; height:70vh; overflow: scroll;">
+            <table id="MinhasEntradas" style="margin-left:1vw;">
+                <tr>
+                    <th>Identificação do Corpo Hídrico</th>
+                    <th>Data de Coleta</th>
+                    <th>Parâmetro de Coleta</th>
+                    <th>Fonte</th>
+                </tr>
+                <% for (const i in samples) { %>
+                    <tr>
+                        <td style="border: 1px solid black;"><%= samples[i].locais_identificacao %></td>
+                        <td style="border: 1px solid black;"><%= samples[i].data_coleta %></td>
+                        <td style="border: 1px solid black;"><%= samples[i].parametros_parametro %></td>  
+                        <td style="border: 1px solid black;"><%= samples[i].fonte %></td>  
+                        <td>
+                            <form action="/editform" method="POST">
+                                <input id="IdColeta" name="IdColeta" hidden value = <%= samples[i].id_coleta %> ></input>
+                                <div id="button">
+                                    <input type="submit" value="Editar Entrada">
+                                </div>
+                            </form>
+                        </td>
+                    </tr> 
+                <% } %>
+                </table>
+        </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,271 @@
+body {
+  margin: 0;
+  padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color:gainsboro;
+}
+
+p {
+  word-wrap: break-word;
+  line-height: 2%;
+}
+
+/* ========= ========= ========= MAISINFO ========= ========= ========= */
+
+#janelaInfo {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+  border: 1px solid black;
+  top: 15vh;
+  left:22vw;
+  height:fit-content;
+  width: fit-content;
+}
+
+#janelaInfoHeader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color:  rgb(46,82,136);
+  border-bottom: 1px solid black;
+  color: #fff;
+}
+
+#ParametrosReferencia table, th, td {
+  border: 1px solid black;
+}
+
+/* ========= ========= ========= HEADER ========= ========= ========= */
+
+#header{
+  margin: 0;
+  top: 0%;
+  left: 0%;
+  padding-left: 0.1vw;
+  padding-top: 0.5vh;
+  text-align:left;
+  vertical-align: top;
+  background: rgb(46,82,136);
+  background: linear-gradient(138deg, rgba(46,82,136,1) 0%, rgba(72,116,181,1) 47%, rgba(98,142,209,1) 74%, rgba(142,185,249,1) 100%);
+  border: 1px solid black;
+  color: white;
+}
+
+#header h1 {
+  padding-left: 0.5vw;
+  font: 26px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#header a {
+  color: white;
+}
+
+/* ========= ========= ========= BUSCA ========= ========= ========= */
+
+#buscador-conteudo {
+  margin-left:2.0vw;
+}
+
+#buscador h1{
+  padding-left: 0.5vw;
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align:center;
+}
+
+.wrapper option:nth-child(n+11){
+  background-color: gold;
+  display:none;
+}
+
+#buscador li:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+
+/* ========= ========= ========= DATA INPUT FORM PAGE ========= ========= ========= */
+
+#formbox {
+  position: absolute;
+  left: 50vw;
+  transform: translate(-50%, -0%);
+  margin-top:50px;
+  height:fit-content;
+  width: 500px;
+  text-align: left;
+  background-color: #2e5288;
+  border: 1px solid black;
+
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color:white;
+}
+
+#formbox input{
+  margin-left: 1vw;
+  margin-bottom:5px;
+}
+
+#midtext input{
+  margin-left:1%;
+  width: 30%;
+}
+
+#longtext input{
+  margin-left: 1%;
+  width: 90%;
+  margin-bottom:0.05vh;
+}
+
+#shorttext input{
+  margin-bottom:0.05vh;
+}
+
+#formtitle{
+  font: 22px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color:white;
+}
+
+#formbox section{
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-bottom: 1vh;
+  border: 1px solid black;
+}
+
+#formbox p {
+  text-align: center;
+  font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color:white;
+}
+
+#formbox h2 {
+  text-align: center;
+  font: 22px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color:white
+}
+
+#formbox label {
+  margin-left: 1vw;
+}
+
+#formbox textarea {
+  margin-left: 1vw;
+  width: 90%;
+}
+
+/* ========= ========= ========= LOGIN PAGE ========= ========= ========= */
+
+#loginform {
+  position: absolute;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+  vertical-align: middle;
+  background-color: #2e5288;
+  /* #1b4585; */
+  color: white;
+  border: 1px solid black;
+
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-bottom: 1vh;
+
+  width: auto;
+  height: auto;
+}
+
+
+#loginform a {
+  color: white;
+}
+
+#loginform input {
+  padding-left: 0.1vw;
+  padding-right: 1vw;
+  padding-bottom: 0;
+  vertical-align: middle;
+}
+
+#loginform form {
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-bottom: 1vh;
+  vertical-align: middle;
+}
+
+/* ========= ========= ========= TOP BAR NAVIGATION ========= ========= ========= */
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4378c7;
+  color: white;
+}
+
+/* taken from we3 schools */
+/* Add a black background color to the top navigation */
+.topnav {
+  padding-left: 0.4vw;
+  overflow:auto;
+  padding-bottom: 0.5vh;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  text-align: center;
+  text-decoration: none;
+  font-size: 17px;
+  border-radius: 0.2vw;
+  background-color: #467cce;
+  border: 1px solid black;
+  margin-right: 0.2vw;
+  padding: 0.2vw 0.2vh;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #494949;
+  color: white;
+}
+
+#navigation {
+  padding-top:0%
+}
+
+/* ========= ========= ========= BUTTON ========= ========= ========= */
+/* Style the links inside the navigation bar */
+#button a {
+  position: relative;
+  width: auto;
+  text-align: center;
+  padding: 5px 5px;
+  text-decoration: none;
+  border-radius: 6%;
+  background-color: #467cce;
+  border: 1px solid black;
+  margin-right: 4px;
+}
+
+/* Change the color of links on hover */
+#button a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+#button a.active {
+  background-color: #494949;
+  color: white;
+}

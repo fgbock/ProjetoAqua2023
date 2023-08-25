@@ -1,0 +1,22 @@
+  /* EXPERIMENTING */
+  #barraBusca {
+    font-size:1rem;
+    position: absolute;
+    z-index: 9;
+    background-color: #f1f1f1;
+    opacity: 0.8;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    border-radius: 1rem;
+  }
+
+  #inputBusca {
+    width:16rem;
+  }
+
+  #searchIcon{
+    width:0.8rem;
+    height:0.8rem;
+    margin-right:0.1rem;
+  }
+

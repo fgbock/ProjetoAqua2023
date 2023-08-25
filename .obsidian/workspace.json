@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "1474d97f10374dff",
+    "type": "split",
+    "children": [
+      {
+        "id": "364df9c04cef4351",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3cd8a7bb6e405dc4",
+            "type": "leaf",
+            "state": {
+              "type": "kanban",
+              "state": {
+                "file": "Doc/Workflow Kanban.md"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "8e7dd4d456f96e63",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c41b88520fe83c4a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Doc/Notes/Setup.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "22b02c13313a4558",
+    "type": "split",
+    "children": [
+      {
+        "id": "ec6ca7808cf8a50f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b885f0de43ff0b78",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "13c6064ecdf04435",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d95d7224d9bafff4",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "35d0b47c5012f390",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4bc4319e8275ef11",
+    "type": "split",
+    "children": [
+      {
+        "id": "0214ea939f88dfa8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7fc8ef0c6d4d0834",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Doc/Workflow Kanban.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6680e3e27fad2a8d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Doc/Workflow Kanban.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "3a28a4f0aa171e78",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "9feb2546511a0728",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Doc/Workflow Kanban.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "3cd8a7bb6e405dc4",
+  "lastOpenFiles": [
+    "App/includes/dbConnection_internal.js",
+    "App/includes/dbConnection - Copia.js",
+    "App/includes/security.js",
+    "App/includes/securityScripts.txt",
+    "Database/Scripts/errorlog.txt",
+    "Database/Scripts/__pycache__/parsesheet.cpython-311.pyc",
+    "Doc/SQL.md",
+    "Doc/Workflow Kanban.md",
+    "README.md",
+    "Doc/Notes/Setup.md",
+    "Doc/filtros.png",
+    "Doc/Notes/Setup @{2023-05-28}.md",
+    "Doc/Notes",
+    "Doc/query.png",
+    "Untitled.md",
+    "ProjetoAqua/App/node_modules/@elastic/elasticsearch/node_modules/debug/node_modules/ms/readme.md",
+    "ProjetoAqua/App/node_modules/@elastic/elasticsearch/node_modules/debug/node_modules/ms/package.json",
+    "ProjetoAqua/App/node_modules/@elastic/elasticsearch/node_modules/debug/node_modules/ms/license.md",
+    "ProjetoAqua/App/node_modules/@elastic/elasticsearch/node_modules/debug/node_modules/ms/index.js",
+    "ProjetoAqua/App/node_modules/with/node_modules/acorn/src/walk/index.js",
+    "ProjetoAqua/App/node_modules/with/node_modules/acorn/src/loose/statement.js",
+    "ProjetoAqua/App/public/v6.5.0/doc/tutorials/raster-reprojection-resources/iterative-triangulation.png",
+    "ProjetoAqua/App/public/v6.5.0/doc/tutorials/raster-reprojection-resources/how-it-works.jpg",
+    "ProjetoAqua/App/public/v6.5.0/doc/tutorials/raster-reprojection-resources/double-occurrence.jpg",
+    "ProjetoAqua/App/node_modules/ol-mapbox-style/dist/examples/data/sprites@2x.png",
+    "ProjetoAqua/App/node_modules/ol-mapbox-style/dist/examples/data/sprites.png",
+    "ProjetoAqua/App/node_modules/@elastic/elasticsearch/node_modules/ms/readme.md",
+    "ProjetoAqua/App/node_modules/@elastic/elasticsearch/node_modules/ms/license.md",
+    "ProjetoAqua/App/node_modules/@elastic/elasticsearch/node_modules/debug/README.md",
+    "ProjetoAqua/App/public/v6.5.0/examples/resources/map-background.jpg",
+    "ProjetoAqua/App/public/v6.5.0/examples/resources/logo-70x70.png",
+    "ProjetoAqua/App/public/v6.5.0/examples/data/ufo_shapes.png",
+    "ProjetoAqua/App/node_modules/with/node_modules/acorn/README.md",
+    "ProjetoAqua/App/node_modules/uglify-js/node_modules/source-map/README.md",
+    "ProjetoAqua/App/node_modules/uglify-js/node_modules/source-map/CHANGELOG.md",
+    "ProjetoAqua/App/node_modules/transformers/node_modules/uglify-js/README.md",
+    "ProjetoAqua/App/node_modules/transformers/node_modules/promise/Readme.md",
+    "ProjetoAqua/App/node_modules/transformers/node_modules/is-promise/readme.md",
+    "ProjetoAqua/App/node_modules/transformers/node_modules/source-map/README.md",
+    "ProjetoAqua/App/node_modules/transformers/node_modules/source-map/CHANGELOG.md",
+    "ProjetoAqua/App/node_modules/readable-stream/doc/wg-meetings/2015-01-30.md",
+    "ProjetoAqua/App/node_modules/ol/src/format/readme.md",
+    "ProjetoAqua/App/node_modules/express-session/node_modules/safe-buffer/README.md",
+    "ProjetoAqua/App/node_modules/express-session/node_modules/depd/Readme.md",
+    "ProjetoAqua/App/node_modules/express-session/node_modules/depd/History.md",
+    "ProjetoAqua/App/node_modules/express/node_modules/cookie/README.md"
+  ]
+}

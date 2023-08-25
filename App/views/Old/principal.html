@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <title><%= title %></title>
+      <link rel="stylesheet" href="/stylesheets/style.css" />
+      <link rel="stylesheet" href="/stylesheets/olmap.css" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+      <style>
+        .map {
+          background-color: gainsboro;
+          position: absolute;
+          height: 87.5%;
+          width: 99.9%;
+          border: 1px solid black;
+        }
+      </style>
+      <script type="text/javascript" src="javascripts/principal.js"></script>  
+      <script type="text/javascript" src="javascripts/common.js"></script>  
+      <script type="text/javascript" src="v6.5.0\build\ol.js"></script>  
+
+      <script>
+        function popularResultados(){
+          var raw = '<%- JSON.stringify(listaLocais) %>'; 
+          var parsed = JSON.parse(raw);
+          var localBuscado = document.getElementById('localBuscado').value
+          var source = markers.getSource();
+          var markerList = [];
+          source.clear();
+          for(i=0;i<parsed.length;i++){
+            if (localBuscado === parsed[i].identificacao || localBuscado === "")
+            {
+              var marker = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([Number(parsed[i].longitude_decimal), Number(parsed[i].latitude_decimal)])));
+              marker.set('listIndex', i);
+              markerList.push(marker);
+            }
+          }  
+          markers.getSource().addFeatures(markerList);
+        }
+
+        function popularResultadosFiltros(locais){
+          var localBuscado = document.getElementById('localBuscado').value
+          var source = markers.getSource();
+          var markerList = [];
+          source.clear();
+          for(i=0;i<locais.length;i++){
+            if (localBuscado === locais[i].identificacao || localBuscado === "")
+            {
+              var marker = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([Number(locais[i].longitude_decimal), Number(locais[i].latitude_decimal)])));
+              marker.set('listIndex', i);
+              markerList.push(marker);
+            }
+          }  
+          markers.getSource().addFeatures(markerList);
+        }
+      </script>
+  </head>
+
+  <body>
+    <!-- Draggable DIV -->
+    <div id="janelaInfo" style="display:none;">
+    <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+      <div id="janelaInfoHeader">
+        <div style="text-align:left; float:left;"> 
+          <p style="text-align: center;">Informações Adicionais</p>
+        </div>
+        <div id="test"> 
+          <button style="float: right;" type="button" onclick="closeWindow('janelaInfo')">X</button>  
+        </div>
+        <br>
+      </div>
+      <div id="ParametrosReferencia" style="margin-left:0.2vw; margin-right:0.2vw; margin-top:0.5vh; margin-bottom:0.5vh;">
+      </div>
+    </div>
+
+    <div id="header">       
+      <h1><strong><%= headername %></strong></h1>
+      <div id="navigation">
+        <div class="topnav">
+          <a class="active" href="/">Principal</a>
+          <a href="./painel">Painel de Usuário</a>
+          <a href="./contato">Contato</a>
+          <a href="./sobre">Sobre</a>
+        </div>
+      </div> 
+    </div>
+    <div>
+       <div id="map" class="map"></div> <!-- -->
+      <input id="Buscador" style="display: none;" value="simples">
+
+      <!-- BUSCA SIMPLES -->
+      <div id="BuscaSimples" style="position: relative; margin-left:15px; margin-top: 5px; width:fit-content;  
+      top:auto; right: 10px; padding: 0.2%; 
+      background-color: rgba(80, 157, 219, 0.507); 
+      border: 1px solid black;
+      display: block;">
+        <input type="text" id="localBuscado" list="locais" name="locais" placeholder="Nome ou identificação do corpo hídrico" 
+        style="width: 256px; margin-left:0.1vw;">
+        <datalist id="locais" name="locais" required>
+          <% for (const i in listaIdentLocais) { %>
+            <option value="<%= listaIdentLocais[i].identificacao %>"> <%= listaIdentLocais[i].identificacao %>
+          <% } %>
+        </datalist>
+        <button type="button" onclick="popularResultados()">Buscar</button>
+        <button type="button" onclick="switchSearch('avancada')">Busca Avançada</button>
+      </div>    
+
+      <!-- BUSCA AVANCADA -->
+      <div id="BuscaAvancada" style="position: relative; margin-left:15px; margin-top: 5px; width:450px;  
+      top:auto; right: 10px; padding: 0.2%; 
+      background-color: rgba(80, 157, 219, 0.507); 
+      border: 1px solid black; display: none;">
+        <div id="JanelaDeFiltros" style="position: relative; margin-left:13px; margin-top:5px; width:440px;  
+        top:auto; right: 10px; padding: 0.2%;
+        background-color: rgba(255, 255, 255, 0.877);
+        border: 1px solid black; height:fit-content;">      
+        <br>
+        <!-- FILTROS (REFATORAR / MELHORAR )-->
+        <label style="margin-left:0.5vw;" for="FiltroCoord">Coordenadas Selecionadas:</label>
+        <input id="FiltroCoordLat" style="width: 50px;" disabled value = "0">
+        <input id="FiltroCoordLong" style="width: 50px;" disabled value = "0">
+        <br><br>
+        <!-- FILTRO 1 -->
+        <div id="ListaDeFiltros"></div>
+            <div id="Filtro0" style="margin-left:0.5vw; display: flex; ">
+              <label for="Filtro0">Filtrar:</label>
+              <select name="TipoDeFiltro0" id="TipoDeFiltro0" style="width: 100px;" onchange="SetFilter(this.value,0)">
+                <option>-</option>
+                <option>Identificação</option>
+                <option>Bacia Hidrográfica</option>
+                <option>Município</option>
+                <option>Parâmetro</option>
+                <option>Data de Coleta</option>
+              </select>
+              <div id="FiltroDeValor0">
+                <input type="text" id="ValorSelecionado0" name="ValorSelecionado0" list="ListaValoresFiltro0" placeholder="Valor desejado" 
+                style="width: 100px; margin-left:1.6%; margin-left:0.5vw; display:block;">
+                <datalist id="ListaValoresFiltro0" name="ListaValoresFiltro0" required>
+                </datalist>
+              </div>
+              <div id="FiltroDeData0" style="display: none; margin-left:0.5vw;">
+                <select id="MesSelecionado0" name="MesSelecionado0" required>
+                  <option value="0">-</option>
+                  <option value="1">Janeiro</option>
+                  <option value="2">Fevereiro</option>
+                  <option value="3">Março</option>
+                  <option value="3">Outono</option>
+                  <option value="4">Abril</option>
+                  <option value="5">Maio</option>
+                  <option value="6">Junho</option>
+                  <option value="6">Inverno</option>
+                  <option value="7">Julho</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Setembro</option>
+                  <option value="9">Primavera</option>
+                  <option value="11">Novembro</option>
+                  <option value="12">Dezembro</option>
+                  <option value="12">Verão</option>
+                </select>
+                <input id="AnoSelecionado0" name="AnoSelecionado0" type="number" min="1970" max="2050" placeholder="2021" required>
+              </div>
+            </div>  
+            <br>   
+            <button type="button" style="margin-left:0.5vw; background-color: #138d54; color:white;" onclick="addFilter()">+ Adicionar Filtro</button>
+            <button type="button" style="margin-left:0.5vw; background-color: #138d54; color:white;" onclick="removeFilter()">+ Remover Filtro</button>
+            <br><br>  
+          </div>   
+        <!-- FIM FILTROS -->  
+          <br>
+          <button type="button" style="margin-left:0.5vw;" onclick="advancedSearch()">Buscar</button>
+          <button type="button"  onclick="switchSearch('simples')">Busca Simples</button>
+          <br><br>    
+        </div>
+      </div>
+
+      <!-- DISPLAY DE RESULTADOS DE BUSCA AVANÇADA -->    
+      <div id="JanelaDeResultados" style="position: relative; margin-left: 15px; margin-top:0.3vh; width:fit-content;  
+      top:auto; right: 10px; padding: 0.2%; width:450px;
+      background-color: rgba(255, 255, 255, 0.877);
+      border: 1px solid black; height:fit-content; display: none;">
+        <div style="text-align:right;"> 
+          <button type="button" onclick="closeWindow('JanelaDeResultados')">X</button>  
+        </div>
+        <h3><strong><p id ="TituloDeJanela" style="text-align:center;margin-top:0.5vh">Resultados de Busca</p></strong></h3>
+        <br>
+        <!-- Dados de coletas -->    
+        <div style="text-align:right;"> 
+          <button type="button" style="text-align: right;" onclick="generateReport('SubJanelaDeResultados')">Gerar Relatório</button>
+        </div>
+        <div id="SubJanelaDeResultados" style="height:55vh; overflow:scroll; border: 1px solid black;">
+        </div>
+      </div>      
+
+      <!-- DISPLAY DE COLETAS -->    
+      <div id="JanelaDeLocal" style="position: relative; margin-left: 15px; margin-top:0.3vh; width:fit-content;  
+      top:auto; right: 10px; padding: 0.2%; width:450px;
+      background-color: rgba(255, 255, 255, 0.877);
+      border: 1px solid black; height:fit-content; display: none;">
+        <div style="text-align:right;"> 
+          <button type="button" onclick="closeWindow('JanelaDeLocal')">X</button>  
+        </div>
+        <h3><strong><p id ="TituloDeLocal" style="text-align:center;margin-top:0.5vh">Dados de Coletas</p></strong></h3>
+        <strong><p id ="CoordenadasDeLocal" style="text-align:center;margin-top:0.5vh">Local</p></strong>
+        <br>
+        <!-- Selecionar data -->    
+        <label for="SeletorDataDeColetas">Data de Coleta:</label>
+        <select name="SeletorDataDeColetas" id="SeletorDataDeColetas" onchange="ValidateDateOrSource(this.value,'')">
+        </select>
+        <br><br>
+        <!-- Selecionar fonte -->    
+        <label for="SeletorFonteDeColetas">Fonte de Coleta:</label>
+        <select name="SeletorFonteDeColetas" id="SeletorFonteDeColetas" style="width: 15vw" onchange="ValidateDateOrSource('',this.value)">
+        </select>
+        <br><br>
+        <label style="text-align: left;" for="dados">Dados de Coletas:</label>
+        <div style="text-align:right;"> 
+          <button type="button" style="text-align: right;" onclick="generateReport('JanelaDeColetas')">Gerar Relatório</button>
+        </div>
+        <br>
+        <!-- Dados de coletas -->    
+        <div id="JanelaDeColetas" style="height:55vh; overflow:scroll; border: 1px solid black;">
+        </div>
+      </div>      
+
+        <!-- SCRIPT DE MAPA -->
+        <script type="text/javascript">
+          var map = new ol.Map({
+            target: 'map',
+            layers: [
+              new ol.layer.Tile({
+                source: new ol.source.OSM()
+              })
+            ],
+            view: new ol.View({
+              center: ol.proj.fromLonLat([-51.23,-30.03]),
+              zoom: 7
+            })
+          });
+
+          var markers = new ol.layer.Vector({
+            source: new ol.source.Vector(),
+            style: new ol.style.Style({
+              image: new ol.style.Icon({
+                
+                anchor: [0.5, 1],
+                src: 'images/iconeSuperficial.png'
+              })
+            })
+          });
+          map.addLayer(markers);
+            
+          // ADDING MARKERS TO THE MAP
+          var raw = '<%- JSON.stringify(listaLocais) %>'; 
+          var parsed = JSON.parse(raw);
+          var markerList = [];
+          for(i=0;i<parsed.length;i++){
+            var marker = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([Number(parsed[i].longitude_decimal), Number(parsed[i].latitude_decimal)])));
+            marker.set('listIndex', i);
+            markerList.push(marker);
+          }  
+          markers.getSource().addFeatures(markerList);
+          map.on('click', function(evt) {
+          var feature = map.forEachFeatureAtPixel(evt.pixel,
+            function(feature) {
+              var z = document.getElementById("Buscador");
+              //console.log(z.value);
+              if (z.value === "avancada"){
+                addCoordFilter(parsed[feature.get('listIndex')].identificacao,
+                parsed[feature.get('listIndex')].latitude_decimal,
+                parsed[feature.get('listIndex')].longitude_decimal);
+              }
+              else if (z.value === "simples") {
+                var marker = document.getElementById("JanelaDeLocal");
+                if (marker.style.display === "none") {
+                  marker.style.display = "block";
+                }
+                var titulo = document.getElementById("TituloDeLocal");
+                var local = document.getElementById("CoordenadasDeLocal");
+                titulo.innerHTML = parsed[feature.get('listIndex')].identificacao;
+                if (parsed[feature.get('listIndex')].utm_e != "" && parsed[feature.get('listIndex')].utm_n != ""){
+                  local.innerHTML = "UTM E: " + parsed[feature.get('listIndex')].utm_e + " UTM N: " + parsed[feature.get('listIndex')].utm_n;
+                }
+                else{
+                  var signs = ["°","'",".","\""];
+                  //console.log(parsed[feature.get('listIndex')].latitude);
+                  var parcial_lat = parsed[feature.get('listIndex')].latitude.split(" ");
+                  var parcial_lng = parsed[feature.get('listIndex')].longitude.split(" ");
+                  var lat_str = "";
+                  var lng_str = "";
+                  for (i in parcial_lat){
+                    if (parcial_lat[i] != ""){
+                      lat_str = lat_str + parcial_lat[i] + signs[i];
+                    }
+                  }
+                  for (i in parcial_lng){
+                    if (parcial_lng[i] != ""){
+                      lng_str = lng_str + parcial_lng[i] + signs[i];
+                    }
+                  }
+                  local.innerHTML = "Latitude: " + lat_str + " Longitude: " + lng_str;
+                }
+                simpleQuery(parsed[feature.get('listIndex')].identificacao,
+                parsed[feature.get('listIndex')].latitude_decimal,
+                parsed[feature.get('listIndex')].longitude_decimal);
+              }
+            });
+          });
+
+        </script>
+      </div>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <script type="text/javascript" src="javascripts/common.js"></script>  
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+    </head>
+    <body>
+        <div id="header">       
+            <h1><strong><%= headername %></strong></h1>
+            <div id="navigation">
+                <div class="topnav">
+                    <a href="/">Principal</a>
+                    <a class="active" href="./painel">Painel de Usuário</a>
+                    <a href="./contato">Contato</a>
+                    <a href="./sobre">Sobre</a>
+                </div>
+            </div> 
+        </div>
+        <div id="loginform">
+            <br>
+			<form action="/login/auth" method="POST">
+                <section style="text-align: center;">
+                    <label for="myUsername">Usuário:</label>
+                    <input type="text" name="myUsername" id="myUsername" minlength="5" maxlength="15" required pattern="[a-zA-Z0-9]+">
+                    <br><br>
+                    <label for="myPassword">Senha:</label>
+                    <input type="password" name="myPassword" placeholder="" id="myPassword" minlength="6" maxlength="15" required>
+                </section>        
+                <input type="checkbox" onclick="showPW()">Mostrar senha
+                <br>
+                <br>
+                <div id="button" style="display:inline-block;">
+                    <input type="submit" value="Login">
+                    <!-- onclick="()" -->
+                </div>
+                <button type="button" style="margin-left:0.0vw;" style="text-align: center;" onclick="showForgotPW()">Esqueci a Senha</button>
+            </form>
+        </div>
+        
+            <!-- Draggable DIV -->
+        <div id="janelaInfo" style="display:none; border: 1px solid black; left:46.5vw; top:65vh;">
+        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+          <div id="janelaInfoHeader">
+            <div style="text-align:left; float:left;"> 
+              <p style="text-align: center;">Esqueceu a senha?</p>
+            </div>
+            <div style="text-align:right; display:inline-block; margin-left:0.3vw"> 
+                <button type="button" onclick="closeWindow('janelaInfo')">X</button>  
+            </div>
+          </div>
+          <p>Contate um administrador:</p>
+          <div style="text-align: center;">
+            <button type="button" onclick="location.href = './contato';">Contatos</button>  
+          </div>
+        </div>
+    </body>
+</html>

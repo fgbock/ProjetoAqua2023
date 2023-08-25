@@ -1,0 +1,9 @@
+.star {
+    color: grey;
+    font-size:200%; 
+    display: inline;
+}
+
+.star:hover {
+    color: gold;
+}

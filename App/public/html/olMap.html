@@ -1,0 +1,31 @@
+<!-- SCRIPT DE MAPA -->
+<div class="wrapper">
+    <div id="map" class="map"></div>
+</div>
+  
+
+
+<script type="text/javascript">
+    var map = new ol.Map({
+        pixelRatio: 1,
+        target: 'map',
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat([-51.23,-30.03]),
+            zoom: 7,
+        })
+    });
+</script>
+
+<script type="text/javascript">
+    $('#inputBusca').on('keyup change', function () {
+        console.log($('#inputBusca').val());
+        // If adding things, send a request to update data
+
+        // If removing things, update with currently 'cached' data
+    });
+</script>

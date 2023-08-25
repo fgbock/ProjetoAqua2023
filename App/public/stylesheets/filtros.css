@@ -1,0 +1,36 @@
+
+#janelaFiltros{
+    top: 9rem;
+    font-size:1rem;
+    position: absolute;
+    z-index: 9;
+    background-color: #f1f1f1;
+    opacity: 0.8;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    width: 35rem;
+    height:  15rem;
+    border-radius: 1rem;
+  }
+
+  .CoordDisplay {
+    text-align: left;
+    position:absolute;
+  }
+
+  #latDisplay {
+    margin-left:15%;
+  }
+
+  #longDisplay {
+    margin-left:55%;
+  }
+
+  #secaoFiltros {
+    margin-top:3rem;
+    margin-left:2rem;
+  }
+
+  .opcaoFiltro {
+    display: flex;
+  }

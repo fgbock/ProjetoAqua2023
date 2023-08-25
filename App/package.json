@@ -1,0 +1,26 @@
+{
+  "name": "qualidade-das-aguas",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.13.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.6",
+    "express": "~4.16.1",
+    "express-myconnection": "^1.0.4",
+    "express-session": "^1.17.1",
+    "favicon": "^0.0.2",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1",
+    "ol": "^6.5.0",
+    "seedrandom": "^3.0.5",
+    "serve-favicon": "^2.5.0",
+    "utm-latlng": "^1.0.6"
+  }
+}

@@ -1,0 +1,54 @@
+<head>
+    <link rel="icon" href="/images/favicon.ico">
+    <script type="text/javascript" src="javascripts/common.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+    <script>
+        $(function(){
+            loadComponent("topMenu","topBar", function(){
+                var headername = $('#headername')[0]
+                headername.insertAdjacentHTML('beforeend','<%- headername %>');
+                $('#botaoMenuPainel').addClass("active");
+                var contagemAcessos = $('#contagemAcessos')[0]
+                contagemAcessos.insertAdjacentHTML('beforeend','0');
+            });
+        });        
+
+        function showPW() {
+                var x = document.getElementById("myPassword");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+
+            function showForgotPW(){
+                var x = document.getElementById("janelaInfo");
+                x.style.display = "block";
+            }
+        </script>
+</head>
+<body>
+    <div id="topBar"></div>
+    <div style="text-align: left; margin-left: 2rem;" id="loginform">
+        <br>
+        <p>Insira os seus dados de usuário para acessar o painel de pesquisador:</p>
+        <form  action="/login/auth" method="POST">
+            <section >
+                <label for="myUsername">Usuário:</label>
+                <input type="text" name="myUsername" id="myUsername" minlength="5" maxlength="15" required pattern="[a-zA-Z0-9]+">
+                <br>
+                <label for="myPassword">Senha:</label>
+                <input type="password" name="myPassword" placeholder="" id="myPassword" minlength="6" maxlength="15" required>
+            </section>        
+            <input type="checkbox" onclick="showPW()">Mostrar senha
+            <br>
+            <br>
+            <div id="button" style="display:inline-block;">
+                <input type="submit" value="Login">
+                <!-- onclick="()" -->
+            </div>
+            <button type="button" style="margin-left:0.0vw;" style="text-align: center;" onclick="showForgotPW()">Esqueci a Senha</button>
+        </form>
+    </div>
+</body>
