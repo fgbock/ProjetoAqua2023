@@ -1,0 +1,1 @@
+INSERT INTO valores_referencia     (parametros_parametro, unidade, tipo_agua, use_ou_classe_agua,    classe_superficial, valor_maximo, notas_portaria, comentarios_adicionais, condicao)     VALUES ('Simazina', 'µg/L', 'Subterrânea', 'Recreação', '', '', '', '', '')
